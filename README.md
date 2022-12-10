@@ -21,6 +21,8 @@ DigiSpark USB or other compatible ATtiny85 boards equiped with USB.
 4. Use Visual Studio 2022 Community to compile the tool WinDigiPass. This application is used to put passwords into the device.
 5. By default the sketch is using only 2 pins for buttons: 0 and 2. Both should be pulled down to ground using some resistor (2kOhm+). And the switches should be connected to VCC.
 
+![image](https://github.com/daniszewski/DigiPass/blob/main/images/DigiSpark1.png)
+
 ## Usage instruction
 
 ### Programming passwords
