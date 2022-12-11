@@ -26,7 +26,9 @@ DigiSpark USB or other compatible ATtiny85 boards equiped with USB.
 1. depending on which platform you use, copy the modified files from folder src/ArduinoLibraryFix
  - Arduino15 to c:\Users\<profile>\AppData\Local\Arduino15\packages\digistump\hardware\avr\1.6.7\libraries\DigisparkKeyboard
  - PlatformIO to c:\Users\<profile>\.platformio\packages\framework-arduino-avr-digistump\libraries\DigisparkKeyboard
-2. use Arduino IDE with installed Digistump/Digispark boards to compile and upload sketch from src\Digispark_keyboard\ to the device
+2. compile and upload sketch from src\Digispark_keyboard\ to the device
+ - open the *.ino file using Arduino IDE with installed Digistump/Digispark boards
+ - in case of VSCode+PlatformIO you need to install the board and create new project, then put the *.ino file in its src folder
 3. use Visual Studio 2022 Community to compile the tool WinDigiPass. This application is used to put passwords into the device.
 4. by default the sketch is using only 2 pins for buttons: 0 and 2. Both should be pulled down to the ground using some resistor (2kOhm+). The switches should be connected to VCC.
 
