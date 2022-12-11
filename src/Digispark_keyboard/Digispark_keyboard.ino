@@ -10,8 +10,9 @@
 
 uint8_t transferedBit = 255;      // currently expected bit number, 255 is used as ending condition
 uint8_t transferedCrc = 255;      // checksum is just a sum of 1's in the uploaded stream
-uint8_t transferedOK;             // this counter decreases to 0 so the status fades in time
-uint8_t transferedERR;            // this counter decreases to 0 so the status fades in time
+uint8_t transferedCrc2 = 255;
+uint8_t transferedOK = 0;         // this counter decreases to 0 so the status fades in time
+uint8_t transferedERR = 0;        // this counter decreases to 0 so the status fades in time
 uint8_t progressState = 0;        // helper variable for status indication by blinking onboard led
 
 char buffer[PWD_MAX_LENGTH];      // main buffer for exchanging passwords between RAM and EEPROM
@@ -30,13 +31,14 @@ void keyboardLedChanged(uint8_t ledsOld, uint8_t ledsNew)
     transferedBit = transferedCrc = transferedOK = transferedERR = 0; // clear state machine
     memset(buffer, 0, sizeof(buffer)); // zero the buffer
   } 
-  else if(transferedBit == 255 && !(ledsNew & CAPS_LOCK) && (ledsOld & CAPS_LOCK)) {  // if capslock turned off and 255 bits transfered
+  else if(transferedBit == 255 && !(ledsNew & CAPS_LOCK) && (ledsOld & CAPS_LOCK) && transferedCrc < 255) {  // if capslock turned off and 255 bits transfered
     bool checksumValid = transferedBit == 255 && (buffer[PWD_MAX_LENGTH-1] & 127) == (transferedCrc & 127); // last bit is not used
     transferedOK = checksumValid ? 100 : 0; // 10 seconds of waiting for user to choose button
     transferedERR = checksumValid ? 0 : 20; // 2 seconds of indicating the error
+    transferedCrc2 = buffer[PWD_MAX_LENGTH-1];
     buffer[PWD_MAX_LENGTH-1] = 0; // last char must be 0 to properly end a string
     // send a message via keyboard
-    MESSAGE = transferedOK ? "ok" : "fail"; // we don't want to block this function for too long so sending messages will be done in main loop
+    MESSAGE = transferedOK ? "ok\r\n" : "fail\r\n"; // we don't want to block this function for too long so sending messages will be done in main loop
   }
   else if(transferedBit < 255) {
     if((ledsNew ^ ledsOld) & SCROLL_LOCK) { // if scrolllock state has changed
@@ -64,11 +66,11 @@ void eepromToBuffer(uint8_t blockNo) { // blockNo: 0-15 because each block is 32
   eeprom_read_block(buffer, (void*)(blockNo*PWD_MAX_LENGTH), PWD_MAX_LENGTH);
 }
 
-void sendUsbKeys(const char* password) {
+void sendUsbKeys(const char* word) {
   DigiKeyboard.sendKeyStroke(0);
-  DigiKeyboard.delay(200);
-  DigiKeyboard.print(password);
-  DigiKeyboard.delay(200);
+  DigiKeyboard.delay(50);
+  DigiKeyboard.print(word);
+  DigiKeyboard.delay(50);
 }
 
 void indicateProgress(uint8_t speed) { // speed: 0 - 5Hz, 1 - 2.5Hz, 2 - 1.5Hz, 4 - 1Hz, ..., 9 - 0.5Hz
@@ -90,11 +92,28 @@ void setup() {
 void loop() {
   if(transferedOK) {
     indicateProgress(0); // indicate waiting for button to save the password (fast)
-    if(!--transferedOK) { transferedERR = 20; } // saving timeout, switch to error indicating
+    if(!--transferedOK) { transferedERR = 19; } // saving timeout, switch to error indicating but no debug (transferedERR < 20)
     // waiting for buttons to save the buffer to proper eeprom block
     if(digitalRead(BUTTON0)) { bufferToEeprom(1); progressClear(); }
     if(digitalRead(BUTTON1)) { bufferToEeprom(2); progressClear(); }
   } else if(transferedERR) {
+/* // DEBUG ONLY
+    if(transferedERR==20) { // show debug only for 20 
+      DigiKeyboard.sendKeyStroke(0);
+      DigiKeyboard.delay(50);
+      DigiKeyboard.print(transferedCrc2 & 127);
+      DigiKeyboard.print("/");
+      DigiKeyboard.print(transferedCrc & 127);
+      DigiKeyboard.print("\r\n");
+      for(uint8_t i=0;i<255;i++) {
+        DigiKeyboard.print(((buffer[i>>3] >> (i&7)) & 1) ? '#' : '-');
+      }
+      buffer[PWD_MAX_LENGTH-1] = transferedCrc2;
+      DigiKeyboard.print((buffer[PWD_MAX_LENGTH-1] >>7) ? '#' : '-');
+      buffer[PWD_MAX_LENGTH-1] = 0;
+      DigiKeyboard.print("\r\n");
+      DigiKeyboard.delay(50);
+    } */
     indicateProgress(4); // indicate error (slow)
     if(!--transferedERR) { progressClear(); } // finish error indication
   } else {

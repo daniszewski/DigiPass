@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace KeyboardCmd
@@ -27,47 +22,20 @@ namespace KeyboardCmd
 
         public static bool NL
         {
-            get
-            {
-                return GetKeyState((int)Keys.NumLock) != 0;
-            }
-            set
-            {
-                if (NL != value)
-                {
-                    PressKeyboardButton(Keys.NumLock);
-                }
-            }
+            get { return GetKeyState((int)Keys.NumLock) != 0; }
+            set { if (NL != value) { PressKeyboardButton(Keys.NumLock); } }
         }
 
         public static bool SL
         {
-            get
-            {
-                return GetKeyState((int)Keys.Scroll) != 0;
-            }
-            set
-            {
-                if (SL != value)
-                {
-                    PressKeyboardButton(Keys.Scroll);
-                }
-            }
+            get { return GetKeyState((int)Keys.Scroll) != 0; }
+            set { if (SL != value) { PressKeyboardButton(Keys.Scroll); } }
         }
 
         public static bool CL
         {
-            get
-            {
-                return GetKeyState((int)Keys.CapsLock) != 0;
-            }
-            set
-            {
-                if (CL != value)
-                {
-                    PressKeyboardButton(Keys.CapsLock);
-                }
-            }
+            get { return GetKeyState((int)Keys.CapsLock) != 0; }
+            set { if (CL != value) { PressKeyboardButton(Keys.CapsLock); } }
         }
     }
 }
