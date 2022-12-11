@@ -181,7 +181,7 @@
 #define KEY_SEPARATOR         0x9F     // Keyboard Separator
 #define KEY_OUT               0xA0     // Keyboard Out
 #define KEY_OPER              0xA1     // Keyboard Oper
-#define KEY_CLEAR             0xA2     // Keyboard Clear/Again
+#define KEY_CLEARAGAIN        0xA2     // Keyboard Clear/Again
 #define KEY_CRSEL             0xA3     // Keyboard CrSel/Props
 #define KEY_EXSEL             0xA4     // Keyboard ExSel
                                        // Keys 0xA5 to 0xAF reserved
@@ -225,7 +225,7 @@
 #define KEY_KPAD_MEM_MULTIPLY 0xD5     // Keypad Memory Multiply
 #define KEY_KPAD_MEM_DIVIDE   0xD6     // Keypad Memory Divide
 #define KEY_PLUS_MINUS        0xD7     // Keypad +/-
-#define KEY_CLEAR             0xD8     // Keypad Clear
+#define KEY_KPAD_CLEAR        0xD8     // Keypad Clear
 #define KEY_CLEAR_ENTRY       0xD9     // Keypad Clear Entry
 #define KEY_BINARY            0xDA     // Keypad Binary
 #define KEY_OCTAL             0xDB     // Keypad Octal

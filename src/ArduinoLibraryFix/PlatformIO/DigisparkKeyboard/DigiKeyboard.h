@@ -14,7 +14,7 @@
 #include <Arduino.h>
 #include <avr/pgmspace.h>
 #include <avr/interrupt.h>
-#include <avr/delay.h>
+#include <util/delay.h>
 #include <string.h>
 
 #include "usbdrv.h"
@@ -45,7 +45,7 @@ typedef struct {
  
  // From Frank Zhao's USB Business Card project
 // http://www.frank-zhao.com/cache/usbbusinesscard_details.php
-const PROGMEM char usbHidReportDescriptor[USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH] = {
+const PROGMEM unsigned char usbHidReportDescriptor[USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH] = {
     0x05, 0x01,                    // USAGE_PAGE (Generic Desktop)
     0x09, 0x06,                    // USAGE (Keyboard)
     0xa1, 0x01,                    // COLLECTION (Application)
