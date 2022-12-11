@@ -14,6 +14,13 @@ DigiSpark USB or other compatible ATtiny85 boards equiped with USB.
 - 2 buttons/pins assigned for selecting passwords
 - communication with management software done by keyboard LED statuses
 
+## Prerequisites for building
+
+1. [Arduino IDE](https://www.arduino.cc/en/Main/Software)
+2. [Additional boards for above](http://digistump.com/package_digistump_index.json)
+3. [USB Drivers](https://github.com/digistump/DigistumpArduino/tree/master/tools)
+4. [Visual Studio](https://visualstudio.microsoft.com/vs/community)
+
 ## Build and deployment
 
 1. install the DigiSpark USB drivers (ATtiny85)
