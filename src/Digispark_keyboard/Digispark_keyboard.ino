@@ -66,11 +66,20 @@ void eepromToBuffer(uint8_t blockNo) { // blockNo: 0-15 because each block is 32
   eeprom_read_block(buffer, (void*)(blockNo*PWD_MAX_LENGTH), PWD_MAX_LENGTH);
 }
 
+void sendKeyStroke(byte keyStroke, byte modifiers) {
+  DigiKeyboard.sendKeyPress(0, modifiers);
+  DigiKeyboard.sendKeyPress(keyStroke, modifiers);
+}
+
+void writeChar(uint8_t chr) {
+  uint8_t data = pgm_read_byte_near(ascii_to_scan_code_table + (chr - 8));
+  sendKeyStroke(data & 0b01111111, data >> 7 ? MOD_SHIFT_LEFT : 0);
+}
+
 void sendUsbKeys(const char* word) {
+  size_t size = strlen(word);
+  while (size--) writeChar(*word++);
   DigiKeyboard.sendKeyStroke(0);
-  DigiKeyboard.delay(50);
-  DigiKeyboard.print(word);
-  DigiKeyboard.delay(50);
 }
 
 void indicateProgress(uint8_t speed) { // speed: 0 - 5Hz, 1 - 2.5Hz, 2 - 1.5Hz, 4 - 1Hz, ..., 9 - 0.5Hz
