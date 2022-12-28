@@ -46,6 +46,8 @@ DigiSpark USB or other compatible ATtiny85 boards equiped with USB.
 6. in case of "ok" received from the device the led on it will start flickering rapidly for another 10 seconds - this is the time when the password waits in RAM for any switch to be assigned. 
 7. pressing one of the switches will store the password in proper block of EEPROM.
 
+![image](https://github.com/daniszewski/DigiPass/blob/main/images/WinDigiPass1.png)
+
 ### Using passwords
 
 1. connect device to USB and use one of buttons. The password assigned to it will be keyed in automatically.
