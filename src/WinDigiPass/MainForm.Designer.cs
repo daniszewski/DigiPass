@@ -51,7 +51,7 @@
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox1.Size = new System.Drawing.Size(1107, 118);
+            this.textBox1.Size = new System.Drawing.Size(712, 118);
             this.textBox1.TabIndex = 3;
             // 
             // textBox2
@@ -61,14 +61,14 @@
             this.textBox2.Location = new System.Drawing.Point(93, 25);
             this.textBox2.MaxLength = 21;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(702, 20);
+            this.textBox2.Size = new System.Drawing.Size(307, 20);
             this.textBox2.TabIndex = 4;
             this.textBox2.UseSystemPasswordChar = true;
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(919, 25);
+            this.button1.Location = new System.Drawing.Point(524, 25);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 20);
             this.button1.TabIndex = 5;
@@ -79,7 +79,7 @@
             // progressBar1
             // 
             this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(1000, 25);
+            this.progressBar1.Location = new System.Drawing.Point(605, 25);
             this.progressBar1.Maximum = 255;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(119, 20);
@@ -93,7 +93,7 @@
             this.checkBox4.AutoSize = true;
             this.checkBox4.Checked = true;
             this.checkBox4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox4.Location = new System.Drawing.Point(801, 28);
+            this.checkBox4.Location = new System.Drawing.Point(406, 28);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(60, 17);
             this.checkBox4.TabIndex = 8;
@@ -119,7 +119,7 @@
             0,
             0,
             0});
-            this.numericUpDown1.Location = new System.Drawing.Point(867, 25);
+            this.numericUpDown1.Location = new System.Drawing.Point(472, 25);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             120,
             0,
@@ -150,8 +150,9 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(864, 9);
+            this.label2.Location = new System.Drawing.Point(469, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 13;
@@ -159,8 +160,9 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(997, 9);
+            this.label3.Location = new System.Drawing.Point(602, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 13);
             this.label3.TabIndex = 14;
@@ -170,7 +172,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1131, 181);
+            this.ClientSize = new System.Drawing.Size(736, 182);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -204,4 +206,3 @@
         private System.Windows.Forms.Label label3;
     }
 }
-
