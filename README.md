@@ -16,7 +16,7 @@ DigiSpark USB or other compatible ATtiny85 boards equiped with USB.
 
 ## Prerequisites for building
 
-1. [Arduino IDE](https://www.arduino.cc/en/Main/Software) or [VSCode](https://code.visualstudio.com/) + [PlatformIO](https://platformio.org/)
+1. [VSCode](https://code.visualstudio.com/) + [PlatformIO](https://platformio.org/)
 2. [Additional boards for above](http://digistump.com/package_digistump_index.json)
 3. [USB Drivers](https://github.com/digistump/DigistumpArduino/tree/master/tools)
 4. [Visual Studio](https://visualstudio.microsoft.com/vs/community)
@@ -24,7 +24,6 @@ DigiSpark USB or other compatible ATtiny85 boards equiped with USB.
 ## Build and deployment
 
 1. depending on which platform you use, copy the modified files from folder src/ArduinoLibraryFix
- - Arduino15 to c:\Users\<profile>\AppData\Local\Arduino15\packages\digistump\hardware\avr\1.6.7\libraries\DigisparkKeyboard
  - PlatformIO to c:\Users\<profile>\.platformio\packages\framework-arduino-avr-digistump\libraries\DigisparkKeyboard
 2. compile and upload sketch from src\Digispark_keyboard\ to the device
  - open the *.ino file using Arduino IDE with installed Digistump/Digispark boards
